@@ -6,6 +6,7 @@ const cors = require('cors')
 const { errorMiddleware } = require('./middleware/error.js')
 dotenv.config();
 
+
 const userRouter = require('./routes/user.js');
 const notesRouter = require('./routes/notes.js');
 
@@ -37,7 +38,6 @@ if (process.env.NODE_ENV === 'production') {
     // Set static folder
     app.use(express.static(path.join(__dirname, '../client/build'))); // Adjust path based on your project structure
 
-    // Catch-all route to serve React's index.html for unhandled routes
     app.get('*', (req, res) => {
         res.sendFile(path.resolve(__dirname, '../client', 'build', 'index.html')); // Adjust path to match your React build location
     });
